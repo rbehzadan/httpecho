@@ -19,7 +19,7 @@ services:
       - "traefik.http.routers.httpecho.middlewares=baseSecurityHeaders@file,rateLimit@file"
 
   httpechoweb:
-    image: rbehzadan/httpecho
+    image: ghcr.io/rbehzadan/httpecho:latest
     container_name: httpechoweb
     hostname: htmlecho.${DOMAIN}
     restart: unless-stopped
