@@ -1,8 +1,13 @@
 name: Release
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
 
 jobs:
   goreleaser:

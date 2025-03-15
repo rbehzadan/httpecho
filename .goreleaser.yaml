@@ -1,3 +1,4 @@
+version: 2
 project_name: httpecho
 
 builds:
@@ -25,7 +26,9 @@ release:
     name: httpecho
 
 archives:
-  - format: tar.gz
+  - format_overrides:
+      - goos: windows
+        format: zip
     name_template: >-
       {{ .ProjectName }}-
       {{- .Version }}-
@@ -34,9 +37,6 @@ archives:
       {{- else if eq .Arch "386" }}i386
       {{- else }}{{ .Arch }}{{ end }}
       {{- if .Arm }}v{{ .Arm }}{{ end }}
-    format_overrides:
-      - goos: windows
-        format: zip
 
 checksum:
   name_template: 'checksums.txt'
