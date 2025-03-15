@@ -3,7 +3,7 @@
 [![Release](https://img.shields.io/github/v/release/rbehzadan/httpecho)](https://github.com/rbehzadan/httpecho/releases/latest)
 [![Go Report Card](https://goreportcard.com/badge/github.com/rbehzadan/httpecho)](https://goreportcard.com/report/github.com/rbehzadan/httpecho)
 [![License](https://img.shields.io/github/license/rbehzadan/httpecho)](https://github.com/rbehzadan/httpecho/blob/main/LICENSE)
-[![Docker Pulls](https://img.shields.io/docker/pulls/ghcr.io/rbehzadan/httpecho)](https://github.com/rbehzadan/httpecho/pkgs/container/httpecho)
+[![Docker Package](https://img.shields.io/github/v/release/rbehzadan/httpecho?label=ghcr.io)](https://github.com/rbehzadan/httpecho/pkgs/container/httpecho)
 
 HTTPEcho is an HTTP request inspector that returns detailed information about incoming HTTP requests in either JSON or HTML format. It's useful for debugging, testing APIs, educational purposes, and understanding how HTTP requests work.
 
