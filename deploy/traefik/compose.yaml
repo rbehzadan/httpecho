@@ -1,0 +1,44 @@
+services:
+  httpecho:
+    image: ghcr.io/rbehzadan/httpecho:latest
+    container_name: httpecho
+    hostname: echo.${DOMAIN}
+    restart: unless-stopped
+    environment:
+      - "RATE_LIMIT=5"
+      - "RATE_WINDOW=10"
+      - "HTML_MODE=false"
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.httpecho.loadbalancer.server.port=3000"
+      - "traefik.http.routers.httpecho.rule=Host(`echo.${DOMAIN}`)"
+      - "traefik.http.routers.httpecho.middlewares=baseSecurityHeaders@file,rateLimit@file"
+
+  httpechoweb:
+    image: rbehzadan/httpecho
+    container_name: httpechoweb
+    hostname: htmlecho.${DOMAIN}
+    restart: unless-stopped
+    environment:
+      - "RATE_LIMIT=5"
+      - "RATE_WINDOW=10"
+      - "HTML_MODE=true"
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.httpechoweb.loadbalancer.server.port=3000"
+      - "traefik.http.routers.httpechoweb.rule=Host(`htmlecho.${DOMAIN}`)"
+      - "traefik.http.routers.httpechoweb.middlewares=baseSecurityHeaders@file,rateLimit@file"
+
+networks:
+  traefik:
+    name: traefik
+    external: true
+

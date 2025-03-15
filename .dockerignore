@@ -1,0 +1,6 @@
+.archive
+.git
+.gitignore
+dist
+deploy
+favicon.ico
